@@ -1,9 +1,12 @@
 class Ranger < ApplicationRecord
-  has_secure_password
   EMAIL_FORMAT = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i.freeze
   UPPERCASE_FORMAT = /[A-Z]/.freeze
   LOWERCASE_FORMAT = /[a-z]/.freeze
   SPECIAL_CHAR_FORMAT = /[!@#?\]]/.freeze
+  PUBLIC_FIELDS = %i[id first_name last_name identification_number]
+
+  has_secure_password
+  has_many :incidents
 
   validates :first_name, :email, :identification_number, presence: true
   # 1a. Validate email is a valid email address.

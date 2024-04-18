@@ -1,4 +1,5 @@
 class RangersController < ApplicationController
+  skip_before_action :authenticate_ranger!, only: :create
   before_action :set_ranger, only: :update
 
   def create
