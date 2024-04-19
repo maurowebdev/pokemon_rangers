@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   post '/sign_in', to: 'sessions#create'
   post '/sign_up', to: 'rangers#create'
-  get 'open_cases/show'
+  get '/open_cases', to: 'open_cases#show'
 end
