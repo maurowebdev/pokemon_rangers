@@ -7,12 +7,14 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_ranger!
+    render json: { message: 'Please log in' }, status: :unauthorized and return if request.authorization.blank?
     return true if current_ranger
 
     render json: { message: 'Please log in' }, status: :unauthorized
   end
 
   def current_ranger
+    return false if request.authorization.blank?
     @current_ranger ||= Ranger.find(decode(request.authorization.split('Bearer ').second).first['id'])
   end
 
