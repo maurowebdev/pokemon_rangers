@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         email: @ranger.email
       }, status: :ok
     else
-      head :unauthorized
+      render json: { message: 'Username or password not found. Please try again.' }, status: :unauthorized
     end
   end
 end

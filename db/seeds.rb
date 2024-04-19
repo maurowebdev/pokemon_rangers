@@ -2,6 +2,16 @@
 Incident.destroy_all
 Ranger.destroy_all
 
+Ranger.create(
+  email: 'mauricio@rangers.com',
+  password: '1234567A@b',
+  first_name: 'Mauricio',
+  last_name: 'Barros',
+  identification_number: '1234567890'
+)
+
+puts 'Created admin!'
+
 30.times do
   Ranger.create(
     email: Faker::Internet.email,
