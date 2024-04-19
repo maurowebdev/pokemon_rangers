@@ -1,8 +1,6 @@
 # MUST HAVE 3. Prefill the public elements with a list you built previously
-Incident.destroy_all
-Ranger.destroy_all
 
-Ranger.create(
+Ranger.first_or_create(
   email: 'mauricio@rangers.com',
   password: '1234567A@b',
   first_name: 'Mauricio',
@@ -12,7 +10,9 @@ Ranger.create(
 
 puts 'Created admin!'
 
-30.times do
+rangers_count = 30 - Ranger.count
+
+rangers_count.times do
   Ranger.create(
     email: Faker::Internet.email,
     password: '1234567A@b',
